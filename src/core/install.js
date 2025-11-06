@@ -1,5 +1,5 @@
 import { execa } from 'execa';
-import { error, failSpinner, startSpinner, successSpinner } from "../utils/logger.js";
+import { failSpinner, startSpinner, successSpinner } from "../utils/logger.js";
 
 export async function installDeps(targetDir, pkgManager) {
     try {

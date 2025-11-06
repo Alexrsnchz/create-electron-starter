@@ -1,5 +1,5 @@
 import degit from 'degit';
-import {error, failSpinner, startSpinner, successSpinner} from "../utils/logger.js";
+import { failSpinner, startSpinner, successSpinner} from "../utils/logger.js";
 
 export async function cloneTemplate(repository, targetDir) {
     try {
