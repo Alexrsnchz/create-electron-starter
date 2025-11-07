@@ -1,18 +1,18 @@
 import { execa } from 'execa';
-import { failSpinner, startSpinner, successSpinner } from "../utils/logger.js";
+import { failSpinner, startSpinner, successSpinner } from '../utils/logger.js';
 
 export async function installDeps(targetDir, pkgManager) {
-    try {
-        startSpinner('📦  Installing dependencies...');
+  try {
+    startSpinner('📦  Installing dependencies...');
 
-        await execa(pkgManager, ['install'], {
-            cwd: targetDir,
-            stdio: 'pipe',
-        });
+    await execa(pkgManager, ['install'], {
+      cwd: targetDir,
+      stdio: 'pipe',
+    });
 
-        successSpinner('Dependencies installed successfully.');
-    } catch (err) {
-        failSpinner('Error installing dependencies.');
-        throw err;
-    }
+    successSpinner('Dependencies installed successfully.');
+  } catch (err) {
+    failSpinner('Error installing dependencies.');
+    throw err;
+  }
 }

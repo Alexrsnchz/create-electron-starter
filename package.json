@@ -1,9 +1,9 @@
 {
-  "name": "create-electron-react-starter",
+  "name": "create-electron-starter",
   "version": "1.0.0",
   "type": "module",
   "bin": {
-    "create-electron-react-starter": "./index.js"
+    "create-electron-starter": "./index.js"
   },
   "dependencies": {
     "@inquirer/prompts": "^7.9.0",
@@ -11,5 +11,8 @@
     "degit": "^2.8.4",
     "execa": "^9.6.0",
     "ora": "^9.0.0"
+  },
+  "devDependencies": {
+    "prettier": "3.6.2"
   }
 }

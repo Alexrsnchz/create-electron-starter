@@ -1,0 +1,12 @@
+# Editor
+.idea
+.vscode
+
+# Modules
+/node_modules
+
+# Config
+package.json
+pnpm-lock.yaml
+
+
