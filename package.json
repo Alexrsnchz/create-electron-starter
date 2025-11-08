@@ -1,10 +1,21 @@
 {
   "name": "create-electron-starter",
+  "description": "An unofficial CLI to scaffold electron-vite projects",
+  "keywords": ["electron", "vite", "cli", "starter", "scaffold"],
+  "author": "Alexrsnchz",
   "version": "1.0.0",
+  "license": "MIT",
   "type": "module",
   "bin": {
     "create-electron-starter": "./index.js"
   },
+  "files": [
+    "index.js",
+    "package.json",
+    "src",
+    "LICENSE",
+    "README.md"
+  ],
   "dependencies": {
     "@inquirer/prompts": "^7.9.0",
     "chalk": "^5.6.2",
