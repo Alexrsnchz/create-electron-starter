@@ -4,21 +4,26 @@ import { detectPackageManager } from './src/core/detector.js';
 import { askFramework, askProjectName } from './src/cli/prompts.js';
 import { getProjectPath } from './src/utils/paths.js';
 import { cloneTemplate } from './src/core/clone.js';
-import { installDeps } from './src/core/install.js';
+import { installDeps } from './src/core/installation/installer.js';
 import { log, error, steps } from './src/utils/logger.js';
+import { configureDeps } from './src/core/configuration/configurator.js';
 
 async function runCLI() {
   log(chalk.cyanBright.bold('🚀  Electron-vite Starter Template'));
 
   try {
-    const pkgManager = await detectPackageManager();
-
+    // Setup prompts
     const projectName = await askProjectName();
     const framework = await askFramework();
 
+    // Intermediate tools
+    const pkgManager = await detectPackageManager();
     const targetDir = getProjectPath(projectName);
-    await cloneTemplate(framework, targetDir);
-    await installDeps(targetDir, pkgManager);
+
+    // Installation process
+    await cloneTemplate(targetDir);
+    await installDeps(framework, pkgManager, targetDir);
+    await configureDeps(framework, targetDir);
 
     steps(projectName, pkgManager);
   } catch (err) {

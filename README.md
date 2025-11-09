@@ -47,10 +47,10 @@ bun add -g create-electron-starter
 
 ## Features
 
-- ⚡️ Minimal, ready-to-run **electron-vite** setup.
-- ⚙️ Framework templates for: `React`, `Vue`, and `Svelte`.
+- ⚡️ Minimal, ready-to-run **electron-vite** + **TypeScript** setup.
+- ⚙️ Framework templates for: `React`, and `Vue`.
 - 🎨 Optional **Tailwind CSS** installation and configuration.
-- 📦 Optional **electron-builder** installation and configuration.
+- 📦 Optional **Electron Builder** installation and configuration.
 
 ## Feedback
 

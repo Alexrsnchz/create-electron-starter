@@ -1,13 +1,8 @@
 import degit from 'degit';
 import { failSpinner, startSpinner, successSpinner } from '../utils/logger.js';
 
-export async function cloneTemplate(framework, targetDir) {
-  const repositories = {
-    react: 'Alexrsnchz/electron-react-starter',
-    //vue: 'Alexrsnchz/electron-vue-starter',
-    //svelte: 'Alexrsnchz/electron-svelte-starter',
-  };
-  const repository = repositories[framework];
+export async function cloneTemplate(targetDir) {
+  const repository = 'Alexrsnchz/electron-starter-template';
 
   try {
     startSpinner('📁  Cloning template from GitHub...');

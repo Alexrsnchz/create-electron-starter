@@ -10,11 +10,7 @@ export async function askProjectName() {
 export async function askFramework() {
   return select({
     message: 'Choose a framework:',
-    choices: [
-      { name: 'React', value: 'react' },
-      { name: 'Vue', value: 'vue' },
-      { name: 'Svelte', value: 'svelte' },
-    ],
-    default: 'react',
+    choices: [{ name: 'React', value: 'react' }],
+    default: 'React',
   });
 }
