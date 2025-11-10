@@ -1,6 +1,15 @@
 import { checkArgs, safePrompt } from './handlers.js';
-import { input, select } from '@inquirer/prompts';
+import { confirm, input, select } from '@inquirer/prompts';
 import { existsSync } from 'fs';
+
+/* Asks if the user wants to remove the files
+of a directory */
+export async function askClearDirectory() {
+  return confirm({
+    message: 'Current directory is not empty. Remove existing files and continue?',
+    default: false,
+  });
+}
 
 /* Asks the name of the project or takes it from
 the command's args */
