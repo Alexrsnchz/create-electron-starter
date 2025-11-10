@@ -31,6 +31,5 @@ export async function askFramework() {
     message: 'Choose a framework:',
     choices: [{ name: 'React', value: 'react' }],
     default: 'react',
-    required: true,
   });
 }
