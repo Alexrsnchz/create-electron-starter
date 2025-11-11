@@ -1,17 +1,30 @@
-import fs from 'fs';
+import { resolve } from 'path';
 
-export async function detectPackageManager() {
+/* Checks if the project's name is ".", in which case
+returns the current directory, otherwise adds the
+name to the path */
+function getProjectPath(projectName) {
+  if (projectName === '.') return process.cwd();
+  return resolve(process.cwd(), projectName);
+}
+
+/* Detects the package manager that was used
+to start the CLI */
+function detectPackageManager() {
   const userAgent = process.env.npm_config_user_agent;
 
   if (userAgent?.includes('pnpm')) return 'pnpm';
   if (userAgent?.includes('yarn')) return 'yarn';
   if (userAgent?.includes('bun')) return 'bun';
-  if (userAgent?.includes('npm')) return 'npm';
-
-  if (fs.existsSync('pnpm-lock.yaml')) return 'pnpm';
-  if (fs.existsSync('yarn.lock')) return 'yarn';
-  if (fs.existsSync('bun.lockb')) return 'bun';
-  if (fs.existsSync('package-lock.json')) return 'npm';
 
   return 'npm';
+}
+
+/* Gets the current directory and package manager
+when the user executes the CLI */
+export function getUserInfo() {
+  const projectDir = getProjectPath();
+  const pkgManager = detectPackageManager();
+
+  return { projectDir, pkgManager };
 }
