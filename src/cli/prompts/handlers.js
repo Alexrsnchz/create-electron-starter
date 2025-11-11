@@ -1,8 +1,8 @@
-import { readdir, rm } from 'fs/promises';
-import path from 'path';
+import { readdir } from 'fs/promises';
 import { askClearDirectory } from './prompts.js';
 import { existsSync } from 'fs';
 import chalk from 'chalk';
+import { directoryClear } from '../../core/remover.js';
 
 /* Checks if the current directory is empty,
 in which case, asks if the user wants to
@@ -14,11 +14,12 @@ async function checkDirectory() {
   if (files.length > 0) {
     const removeFiles = await safePrompt(askClearDirectory);
 
-    if (removeFiles) {
-      await Promise.all(
-        files.map((file) => rm(path.join(currentDir, file), { recursive: true, force: true })),
-      );
+    if (removeFiles === undefined || removeFiles === false) {
+      console.log(chalk.red('❌ Operation canceled.'));
+      process.exit(1);
     }
+
+    if (removeFiles) await directoryClear(currentDir, files);
   }
 }
 
