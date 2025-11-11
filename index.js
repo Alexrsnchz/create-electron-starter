@@ -14,18 +14,18 @@ async function runCLI() {
 
   try {
     // Setup prompts
-    const { projectName, framework } = await executePrompts();
+    const answers = await executePrompts();
 
     // Obtain project information
     const pkgManager = await detectPackageManager();
-    const targetDir = getProjectPath(projectName);
+    const targetDir = getProjectPath();
 
     // Installation process
     await cloneTemplate(targetDir);
-    await installDeps(framework, pkgManager, targetDir);
-    await configureDeps(framework, targetDir);
+    await installDeps(answers.framework, answers.tailwind, pkgManager, targetDir);
+    await configureDeps(answers.framework, answers.tailwind, targetDir);
 
-    steps(projectName, pkgManager);
+    steps(answers.projectName, pkgManager);
   } catch (err) {
     error(err.message || err);
     process.exit(1);

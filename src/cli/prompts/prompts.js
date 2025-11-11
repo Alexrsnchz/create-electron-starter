@@ -43,10 +43,27 @@ async function askFramework() {
   });
 }
 
+/* Asks if the user wants to install Tailwind CSS */
+async function askTailwind() {
+  return confirm({
+    message: 'Do you want to add Tailwind?',
+    default: false,
+  });
+}
+
+const prompts = {
+  projectName: askProjectName,
+  framework: askFramework,
+  tailwind: askTailwind,
+};
+
 /* Executes all the prompts */
 export async function executePrompts() {
-  const projectName = await safePrompt(askProjectName);
-  const framework = await safePrompt(askFramework);
+  const answers = {};
 
-  return { projectName, framework };
+  for (const [key, fn] of prompts) {
+    answers[key] = await safePrompt(fn);
+  }
+
+  return answers;
 }
