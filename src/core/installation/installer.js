@@ -6,7 +6,6 @@ import { getDependencies } from './depsSetup.js';
 export async function installDeps(framework, pkgManager, targetDir) {
   const pm = installCmds[pkgManager];
   const { deps, devDeps } = getDependencies(framework);
-  const args = [];
 
   try {
     startSpinner('📦  Installing dependencies...');
@@ -14,14 +13,14 @@ export async function installDeps(framework, pkgManager, targetDir) {
     if (deps.length > 0) {
       await execa(pkgManager, [...pm.base, ...deps], {
         cwd: targetDir,
-        stdio: 'inherit',
+        stdio: 'pipe',
       });
     }
 
     if (devDeps.length > 0) {
       await execa(pkgManager, [...pm.base, pm.flag, ...devDeps], {
         cwd: targetDir,
-        stdio: 'inherit',
+        stdio: 'pipe',
       });
     }
 
