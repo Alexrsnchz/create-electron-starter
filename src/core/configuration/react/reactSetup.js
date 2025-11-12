@@ -14,6 +14,19 @@ async function createConfig(targetDir) {
   await mkdir(path.join(rendererPath, 'src'), { recursive: true });
 }
 
+/* Updates the tsconfig.json file with the
+framework configuration */
+async function updateTsConfig(targetDir) {
+  const configPath = path.join(targetDir, 'tsconfig.json');
+  let config = await readFile(configPath, 'utf8');
+  const json = JSON.parse(config);
+
+  // Inserts the jsx attribute in the compiler options
+  json.compilerOptions.jsx = 'react-jsx';
+
+  await writeFile(configPath, JSON.stringify(json, null, 2) + '\n', 'utf8');
+}
+
 /* Updates the electron.vite file with the
 framework configuration */
 async function updateViteConfig(targetDir) {
@@ -34,5 +47,6 @@ async function updateViteConfig(targetDir) {
 
 export async function reactSetup(targetDir) {
   await createConfig(targetDir);
+  await updateTsConfig(targetDir);
   await updateViteConfig(targetDir);
 }

@@ -12,11 +12,10 @@ export const html = `<!DOCTYPE html>
 </html>
 `;
 
-export const index = `import React from 'react';
-import ReactDOM from 'react-dom/client';
+export const index = `import { createRoot } from 'react-dom/client';
 import App from './App';
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);`;
+createRoot(document.getElementById('root')!).render(<App />);`;
 
 export const app = `export default function App() {
   return (
