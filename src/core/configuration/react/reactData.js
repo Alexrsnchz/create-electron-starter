@@ -7,12 +7,13 @@ export const html = `<!DOCTYPE html>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="./index.tsx"></script>
+    <script type="module" src="./src/index.tsx"></script>
   </body>
 </html>
 `;
 
 export const index = `import { createRoot } from 'react-dom/client';
+import './index.css';
 import App from './App';
 
 createRoot(document.getElementById('root')!).render(<App />);`;

@@ -6,12 +6,14 @@ import { app, html, index } from './reactData.js';
 the framework */
 async function createConfig(targetDir) {
   const rendererPath = path.join(targetDir, 'src', 'renderer');
+  const sourcePath = path.join(rendererPath, 'src');
+
+  await mkdir(sourcePath, { recursive: true });
 
   await writeFile(path.join(rendererPath, 'index.html'), html, 'utf8');
-  await writeFile(path.join(rendererPath, 'index.tsx'), index, 'utf8');
-  await writeFile(path.join(rendererPath, 'App.tsx'), app, 'utf8');
-
-  await mkdir(path.join(rendererPath, 'src'), { recursive: true });
+  await writeFile(path.join(sourcePath, 'index.tsx'), index, 'utf8');
+  await writeFile(path.join(sourcePath, 'App.tsx'), app, 'utf8');
+  await writeFile(path.join(sourcePath, 'index.css'), 'utf8');
 }
 
 /* Updates the tsconfig.json file with the
@@ -35,12 +37,12 @@ async function updateViteConfig(targetDir) {
 
   // Adds the React import beneath the defineConfig one
   config = config.replace(
-    /(import\s*\{\s*defineConfig\s*}\s*from\s*['"]electron-vite['"];?)/,
+    /(import\s*\{[\s\S]*defineConfig[\s\S]*}\s*from\s*['"]electron-vite['"]\s*;?)/,
     `$1\nimport react from '@vitejs/plugin-react-swc';`,
   );
 
   // Adds the React plugin to the plugins array in renderer
-  config = config.replace(/(renderer:\s*\{\s*plugins:\s*\[)/, '$1react(), ');
+  config = config.replace(/(renderer:\s*\{\s*plugins:\s*\[)/, `$1react(), `);
 
   await writeFile(configPath, config, 'utf8');
 }
