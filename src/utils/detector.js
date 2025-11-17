@@ -1,4 +1,4 @@
-import { resolve } from 'path';
+import path, { resolve } from 'path';
 
 /* Checks if the project's name is ".", in which case
 returns the current directory, otherwise adds the
@@ -20,11 +20,25 @@ function detectPackageManager() {
   return 'npm';
 }
 
+/* Obtains the real project name if the user
+uses the argument "." to create the project */
+export function getRealName(projectName) {
+  let name;
+
+  if (projectName === '.') {
+    name = path.basename(process.cwd());
+  } else {
+    name = projectName;
+  }
+
+  return name;
+}
+
 /* Gets the current directory and package manager
 when the user executes the CLI */
 export function getUserInfo(projectName) {
-  const projectDir = getProjectPath(projectName);
+  const rootDir = getProjectPath(projectName);
   const pkgManager = detectPackageManager();
 
-  return { projectDir, pkgManager };
+  return { rootDir, pkgManager };
 }
