@@ -1,6 +1,6 @@
 import path from 'path';
 import { writeFile } from 'fs/promises';
-import { html, index } from './vanillaData.js';
+import { html, index } from '../contents/vanilla.js';
 
 async function createFiles(targetDir) {
   const rendererPath = path.join(targetDir, 'src', 'renderer');

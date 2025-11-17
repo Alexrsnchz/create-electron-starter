@@ -1,6 +1,8 @@
 import degit from 'degit';
 import { failSpinner, startSpinner, successSpinner } from '../utils/logger.js';
 
+/* Clones the template for the project from
+a GitHub repository */
 export async function cloneTemplate(targetDir) {
   const repository = 'Alexrsnchz/electron-starter-template';
 

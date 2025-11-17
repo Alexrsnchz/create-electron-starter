@@ -1,5 +1,14 @@
 import path, { resolve } from 'path';
 
+/* List of installation commands based on the supported
+package managers */
+export const installCmds = {
+  npm: { cmd: ['install'], flag: '--save-dev' },
+  pnpm: { cmd: ['add'], flag: '-D' },
+  yarn: { cmd: ['add'], flag: '-D' },
+  bun: { cmd: ['install'], flag: '--dev' },
+};
+
 /* Checks if the project's name is ".", in which case
 returns the current directory, otherwise adds the
 name to the path */
@@ -10,7 +19,7 @@ function getProjectPath(projectName) {
 
 /* Detects the package manager that was used
 to start the CLI */
-function detectPackageManager() {
+function getPackageManager() {
   const userAgent = process.env.npm_config_user_agent;
 
   if (userAgent?.includes('pnpm')) return 'pnpm';
@@ -38,7 +47,7 @@ export function getRealName(projectName) {
 when the user executes the CLI */
 export function getUserInfo(projectName) {
   const rootDir = getProjectPath(projectName);
-  const pkgManager = detectPackageManager();
+  const pkgManager = getPackageManager();
 
   return { rootDir, pkgManager };
 }

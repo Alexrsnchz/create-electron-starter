@@ -1,8 +1,10 @@
-import { installCmds } from '../../utils/pkgCmds.js';
+import { installCmds } from '../../utils/detector.js';
+import { getDependencies } from './depsSetup.js';
 import { failSpinner, startSpinner, successSpinner } from '../../utils/logger.js';
 import { execa } from 'execa';
-import { getDependencies } from './depsSetup.js';
 
+/* Installs the base and chosen dependencies
+for the project */
 export async function installDeps(framework, tailwind, pkgManager, targetDir) {
   const pm = installCmds[pkgManager];
   const { deps, devDeps } = getDependencies(framework, tailwind);

@@ -1,4 +1,4 @@
-import { checkArgs, safePrompt } from './handlers.js';
+import { checkArgs, safePrompt } from './cliHandler.js';
 import { confirm, input, select } from '@inquirer/prompts';
 import { existsSync } from 'fs';
 

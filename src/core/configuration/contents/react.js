@@ -9,8 +9,7 @@ export const html = `<!DOCTYPE html>
     <div id="root"></div>
     <script type="module" src="./src/index.tsx"></script>
   </body>
-</html>
-`;
+</html>`;
 
 export const index = `import { createRoot } from 'react-dom/client';
 import './index.css';

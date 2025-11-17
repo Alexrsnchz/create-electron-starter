@@ -1,25 +1,27 @@
 import { failSpinner, startSpinner, successSpinner } from '../../utils/logger.js';
-import { reactSetup } from './react/reactSetup.js';
-import { vanillaSetup } from './vanilla/vanillaSetup.js';
-import { setupTailwind } from './extras/extrasSetup.js';
+import { reactSetup } from './setups/reactSetup.js';
+import { vanillaSetup } from './setups/vanillaSetup.js';
+import { setupTailwind } from './setups/extrasSetup.js';
 
-export async function configureDeps(framework, tailwind, targetDir) {
+/* Adds the configuration needed by the dependencies
+of the project */
+export async function configureDeps(framework, tailwind, rootDir) {
   try {
     startSpinner('⚙️  Adding configuration...');
 
     switch (framework) {
       case 'vanilla':
-        await vanillaSetup(targetDir);
+        await vanillaSetup(rootDir);
         break;
       case 'react':
-        await reactSetup(targetDir);
+        await reactSetup(rootDir);
         break;
       default:
         break;
     }
 
     if (tailwind) {
-      await setupTailwind(targetDir);
+      await setupTailwind(rootDir);
     }
 
     successSpinner('Configuration added successfully.');

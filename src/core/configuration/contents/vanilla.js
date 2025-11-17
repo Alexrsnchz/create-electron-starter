@@ -8,8 +8,7 @@ export const html = `<!DOCTYPE html>
   <body>
     <script type="module" src="./index.ts"></script>
   </body>
-</html>
-`;
+</html>`;
 
 export const index = `const heading = document.querySelector('h1');
 heading.textContent = 'Hello App!';`;

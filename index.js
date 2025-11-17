@@ -2,7 +2,7 @@
 import chalk from 'chalk';
 import { log, error, steps } from './src/utils/logger.js';
 import { executePrompts } from './src/cli/prompts/prompts.js';
-import { getUserInfo } from './src/core/detector.js';
+import { getUserInfo } from './src/utils/detector.js';
 import { cloneTemplate } from './src/core/clone.js';
 import { installDeps } from './src/core/installation/installer.js';
 import { configureDeps } from './src/core/configuration/configurator.js';
@@ -15,12 +15,12 @@ async function runCLI() {
     // Setup prompts
     const answers = await executePrompts();
     // Obtain project information
-    const { projectDir, pkgManager } = getUserInfo(answers.projectName);
+    const { rootDir, pkgManager } = getUserInfo(answers.projectName);
 
     // Installation process
-    await cloneTemplate(projectDir);
-    await installDeps(answers.framework, answers.tailwind, pkgManager, projectDir);
-    await configureDeps(answers.framework, answers.tailwind, projectDir);
+    await cloneTemplate(rootDir);
+    await installDeps(answers.framework, answers.tailwind, pkgManager, rootDir);
+    await configureDeps(answers.framework, answers.tailwind, rootDir);
 
     steps(answers.projectName, pkgManager);
   } catch (err) {
