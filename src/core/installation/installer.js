@@ -3,9 +3,9 @@ import { failSpinner, startSpinner, successSpinner } from '../../utils/logger.js
 import { execa } from 'execa';
 import { getDependencies } from './depsSetup.js';
 
-export async function installDeps(framework, pkgManager, targetDir) {
+export async function installDeps(framework, tailwind, pkgManager, targetDir) {
   const pm = installCmds[pkgManager];
-  const { deps, devDeps } = getDependencies(framework);
+  const { deps, devDeps } = getDependencies(framework, tailwind);
 
   try {
     startSpinner('📦  Installing dependencies...');

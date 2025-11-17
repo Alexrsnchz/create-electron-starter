@@ -1,10 +1,14 @@
-import { baseDeps, frameworkDeps } from './depsData.js';
+import { baseDeps, frameworkDeps, tailwindDeps } from './depsData.js';
 
-export function getDependencies(framework) {
+export function getDependencies(framework, tailwind) {
   const fw = frameworkDeps[framework] || { deps: [], devDeps: [] };
 
-  return {
-    deps: [...baseDeps.deps, ...fw.deps],
-    devDeps: [...baseDeps.devDeps, ...fw.devDeps],
-  };
+  const deps = [...fw.deps];
+  const devDeps = [...baseDeps.devDeps, ...fw.devDeps];
+
+  if (tailwind) {
+    devDeps.push(...tailwindDeps.devDeps);
+  }
+
+  return { deps, devDeps };
 }

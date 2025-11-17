@@ -1,8 +1,9 @@
 import { failSpinner, startSpinner, successSpinner } from '../../utils/logger.js';
 import { reactSetup } from './react/reactSetup.js';
 import { vanillaSetup } from './vanilla/vanillaSetup.js';
+import { setupTailwind } from './extras/extrasSetup.js';
 
-export async function configureDeps(framework, targetDir) {
+export async function configureDeps(framework, tailwind, targetDir) {
   try {
     startSpinner('⚙️  Adding configuration...');
 
@@ -15,6 +16,10 @@ export async function configureDeps(framework, targetDir) {
         break;
       default:
         break;
+    }
+
+    if (tailwind) {
+      await setupTailwind(targetDir);
     }
 
     successSpinner('Configuration added successfully.');
