@@ -5,9 +5,9 @@ import { execa } from 'execa';
 
 /* Installs the base and chosen dependencies
 for the project */
-export async function installDeps(framework, tailwind, pkgManager, targetDir) {
+export async function installDeps(framework, tailwind, builder, pkgManager, targetDir) {
   const pm = installCmds[pkgManager];
-  const { deps, devDeps } = getDependencies(framework, tailwind);
+  const { deps, devDeps } = getDependencies(framework, tailwind, builder);
 
   try {
     startSpinner('📦  Installing dependencies...');

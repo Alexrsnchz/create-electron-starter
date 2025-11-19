@@ -12,3 +12,7 @@ export const frameworkDeps = {
 export const tailwindDeps = {
   devDeps: ['tailwindcss', '@tailwindcss/vite'],
 };
+
+export const builderDeps = {
+  devDeps: ['electron-builder'],
+};
