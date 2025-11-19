@@ -7,20 +7,20 @@ export const html = `<!DOCTYPE html>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="./src/index.tsx"></script>
+    <script type="module" src="./src/main.tsx"></script>
   </body>
 </html>`;
 
-export const index = `import { createRoot } from 'react-dom/client';
-import './index.css';
+export const main = `import { createRoot } from 'react-dom/client';
+import './assets/styles/main.css';
 import App from './App';
 
 createRoot(document.getElementById('root')!).render(<App />);`;
 
 export const app = `export default function App() {
   return (
-    <div style={{ padding: '2rem', textAlign: 'center' }}>
-      <h1>⚡ Electron + Vite + React</h1>
+    <div style={{ padding: '2rem', textAlign: 'center', fontFamily: 'system-ui' }}>
+      <h1>⚡ Electron-vite + <span style={{ color: 'deepskyblue' }}>React</span></h1>
       <p>Thanks for using my template. Happy coding!</p>
     </div>
   );

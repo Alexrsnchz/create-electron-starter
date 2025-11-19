@@ -7,6 +7,10 @@ export const frameworkDeps = {
     deps: ['react', 'react-dom'],
     devDeps: ['@vitejs/plugin-react-swc', '@types/react', '@types/react-dom'],
   },
+  vue: {
+    deps: ['vue'],
+    devDeps: ['@vitejs/plugin-vue', '@vue/compiler-sfc'],
+  },
 };
 
 export const tailwindDeps = {
