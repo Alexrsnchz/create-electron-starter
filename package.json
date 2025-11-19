@@ -1,7 +1,7 @@
 {
   "name": "create-electron-starter",
   "description": "An unofficial CLI to scaffold electron-vite projects",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "type": "module",
   "bin": {
     "create-electron-starter": "./index.js"
