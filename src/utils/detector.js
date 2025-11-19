@@ -1,4 +1,4 @@
-import path, { resolve } from 'path';
+import { resolve } from 'path';
 
 /* List of installation commands based on the supported
 package managers */
@@ -27,20 +27,6 @@ function getPackageManager() {
   if (userAgent?.includes('bun')) return 'bun';
 
   return 'npm';
-}
-
-/* Obtains the real project name if the user
-uses the argument "." to create the project */
-export function getRealName(projectName) {
-  let name;
-
-  if (projectName === '.') {
-    name = path.basename(process.cwd());
-  } else {
-    name = projectName;
-  }
-
-  return name;
 }
 
 /* Gets the current directory and package manager

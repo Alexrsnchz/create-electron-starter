@@ -1,6 +1,5 @@
 import ora from 'ora';
 import chalk from 'chalk';
-import { getRealName } from './detector.js';
 
 let spinner = null;
 
@@ -60,7 +59,7 @@ export function steps(projectName, pkgManager) {
 
   console.log(chalk.bold.cyan(`Your Electron project is ready!\n`));
 
-  console.log(`${chalk.white('👉  cd')} ${chalk.cyan(getRealName(projectName))}`);
+  if (projectName !== '.') console.log(`${chalk.white('👉  cd')} ${chalk.cyan(projectName)}`);
   console.log(chalk.white(`⚡️  ${pkgManager} run ${chalk.cyan('dev')}`));
 
   log(chalk.white('─────────────────────────────────'));
