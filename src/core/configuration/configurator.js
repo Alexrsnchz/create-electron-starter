@@ -1,7 +1,8 @@
 import { failSpinner, startSpinner, successSpinner } from '../../utils/logger.js';
-import { reactSetup } from './setups/reactSetup.js';
-import { vueSetup } from './setups/vueSetup.js';
-import { vanillaSetup } from './setups/vanillaSetup.js';
+import { frameworkSetup } from './configSetup.js';
+import * as vanillaTemplate from './templates/framework/vanilla.js';
+import * as reactTemplate from './templates/framework/react.js';
+import * as vueTemplate from './templates/framework/vue.js';
 import { setupTailwind } from './setups/tailwindSetup.js';
 import { builderSetup } from './setups/builderSetup.js';
 
@@ -13,13 +14,13 @@ export async function configureDeps(framework, tailwind, builder, rootDir) {
 
     switch (framework) {
       case 'vanilla':
-        await vanillaSetup(rootDir);
+        await frameworkSetup(rootDir, 'vanilla', vanillaTemplate);
         break;
       case 'react':
-        await reactSetup(rootDir);
+        await frameworkSetup(rootDir, 'react', reactTemplate);
         break;
       case 'vue':
-        await vueSetup(rootDir);
+        await frameworkSetup(rootDir, 'vue', vueTemplate);
         break;
       default:
         break;

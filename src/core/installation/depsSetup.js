@@ -1,16 +1,21 @@
-import { baseDeps, builderDeps, frameworkDeps, tailwindDeps } from './depsData.js';
+import {
+  BASE_CONFIG,
+  BUILDER_CONFIG,
+  FRAMEWORK_CONFIG,
+  TAILWIND_CONFIG,
+} from '../data/depencencies.js';
 
 export function getDependencies(framework, tailwind, builder) {
-  const fw = frameworkDeps[framework] || { deps: [], devDeps: [] };
+  const fw = FRAMEWORK_CONFIG[framework] || { deps: [], devDeps: [] };
 
-  const deps = [...fw.deps];
-  const devDeps = [...baseDeps.devDeps, ...fw.devDeps];
+  const deps = [...(fw.deps ?? [])];
+  const devDeps = [...BASE_CONFIG.devDeps, ...(fw.devDeps ?? [])];
 
   if (tailwind) {
-    devDeps.push(...tailwindDeps.devDeps);
+    devDeps.push(...TAILWIND_CONFIG.devDeps);
   }
   if (builder) {
-    devDeps.push(...builderDeps.devDeps);
+    devDeps.push(...BUILDER_CONFIG.devDeps);
   }
 
   return { deps, devDeps };

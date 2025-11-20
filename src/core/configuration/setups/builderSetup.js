@@ -1,6 +1,6 @@
 import { readFile, writeFile } from 'fs/promises';
 import path from 'path';
-import { config } from '../contents/builder.js';
+import { config } from '../templates/extra/builder.js';
 
 async function createConfig(targetDir) {
   await writeFile(path.join(targetDir, 'electron-builder.yml'), config, 'utf8');

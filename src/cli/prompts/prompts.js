@@ -33,7 +33,7 @@ async function askProjectName() {
   });
 }
 
-/* Shows a list of frameworks to choose
+/* Shows a list of framework to choose
 and install */
 async function askFramework() {
   return select({
