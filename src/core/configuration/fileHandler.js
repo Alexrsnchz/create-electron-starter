@@ -46,3 +46,32 @@ export async function createFrameworkStructure(rootDir, config, template) {
   }
   await writeFile(path.join(stylesPath, 'main.css'), '', 'utf8');
 }
+
+/* Modify the main css file to add the
+Tailwind import */
+export async function modifyCssFile(rootDir) {
+  const sourcePath = path.join(rootDir, 'src', 'renderer', 'src');
+  const stylesPath = path.join(sourcePath, 'assets', 'styles', 'main.css');
+
+  await writeFile(stylesPath, `@import 'tailwindcss';`, 'utf8');
+}
+
+/* Creates a new config file in the root directory
+with the specified data */
+export async function createConfigFile(rootDir, output, template) {
+  await writeFile(path.join(rootDir, output), template, 'utf8');
+}
+
+/* Adds the scripts needed by electron builder
+to the package.json */
+export async function updateScripts(rootDir) {
+  const configPath = path.join(rootDir, 'package.json');
+  const pkg = JSON.parse(await readFile(configPath, 'utf8'));
+
+  pkg.scripts['build:installer'] = 'electron-builder';
+  pkg.scripts['build:win'] = 'electron-builder --win';
+  pkg.scripts['build:mac'] = 'electron-builder --mac';
+  pkg.scripts['build:linux'] = 'electron-builder --linux';
+
+  await writeFile(configPath, JSON.stringify(pkg, null, 2), 'utf8');
+}

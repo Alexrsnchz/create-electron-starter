@@ -1,4 +1,4 @@
-export const config = `appId: com.company.myapp
+export const builderTemplate = `appId: com.company.myapp
 productName: MyApp
 artifactName: MyApp-1.0.0-win-x64.exe
 

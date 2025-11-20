@@ -1,10 +1,9 @@
 import { failSpinner, startSpinner, successSpinner } from '../../utils/logger.js';
-import { frameworkSetup } from './configSetup.js';
+import { builderSetup, frameworkSetup, tailwindSetup } from './configSetup.js';
 import * as vanillaTemplate from './templates/framework/vanilla.js';
 import * as reactTemplate from './templates/framework/react.js';
 import * as vueTemplate from './templates/framework/vue.js';
-import { setupTailwind } from './setups/tailwindSetup.js';
-import { builderSetup } from './setups/builderSetup.js';
+import { builderTemplate } from './templates/extra/builder.js';
 
 /* Adds the configuration needed by the dependencies
 of the project */
@@ -26,8 +25,8 @@ export async function configureDeps(framework, tailwind, builder, rootDir) {
         break;
     }
 
-    if (tailwind) await setupTailwind(rootDir);
-    if (builder) await builderSetup(rootDir);
+    if (tailwind) await tailwindSetup(rootDir);
+    if (builder) await builderSetup(rootDir, 'electron-builder.yml', builderTemplate);
 
     successSpinner('Configuration added successfully.');
   } catch (err) {

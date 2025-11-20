@@ -25,6 +25,8 @@ export const BASE_CONFIG = {
 };
 
 export const TAILWIND_CONFIG = {
+  imp: `import tailwindcss from '@tailwindcss/vite'`,
+  plugin: 'tailwindcss()',
   devDeps: ['tailwindcss', '@tailwindcss/vite'],
 };
 
