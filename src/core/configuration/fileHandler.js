@@ -32,19 +32,20 @@ export async function updateTsConfig(rootDir) {
 
 /* Creates the files and folders needed by
 the framework */
-export async function createFrameworkStructure(rootDir, config, template) {
+export async function createFrameworkStructure(rootDir, config, tailwind, template) {
   const rendererPath = path.join(rootDir, 'src', 'renderer');
   const sourcePath = path.join(rendererPath, 'src');
   const stylesPath = path.join(sourcePath, 'assets', 'styles');
+  const appTemplate = tailwind ? template.tailwindapp : template.cssapp;
 
   await mkdir(stylesPath, { recursive: true });
 
   await writeFile(path.join(rendererPath, 'index.html'), template.html, 'utf8');
   await writeFile(path.join(sourcePath, config.main), template.main, 'utf8');
-  if (config.app && template.app) {
-    await writeFile(path.join(sourcePath, config.app), template.app, 'utf8');
+  if (config.app) {
+    await writeFile(path.join(sourcePath, config.app), appTemplate, 'utf8');
   }
-  await writeFile(path.join(stylesPath, 'main.css'), '', 'utf8');
+  await writeFile(path.join(stylesPath, 'main.css'), template.css, 'utf8');
 }
 
 /* Modify the main css file to add the

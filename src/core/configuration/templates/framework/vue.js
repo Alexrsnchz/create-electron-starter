@@ -18,7 +18,7 @@ import App from './App.vue';
 createApp(App).mount('#app');`;
 
 export const app = `<template>
-  <div id="app">
+  <div id="app" class="container">
     <h1>⚡ Electron-vite + <span class="vue">Vue</span></h1>
     <p>Thanks for using my template. Happy coding!</p>
   </div>

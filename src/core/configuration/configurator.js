@@ -13,13 +13,13 @@ export async function configureDeps(framework, tailwind, builder, rootDir) {
 
     switch (framework) {
       case 'vanilla':
-        await frameworkSetup(rootDir, 'vanilla', vanillaTemplate);
+        await frameworkSetup(rootDir, 'vanilla', tailwind, vanillaTemplate);
         break;
       case 'react':
-        await frameworkSetup(rootDir, 'react', reactTemplate);
+        await frameworkSetup(rootDir, 'react', tailwind, reactTemplate);
         break;
       case 'vue':
-        await frameworkSetup(rootDir, 'vue', vueTemplate);
+        await frameworkSetup(rootDir, 'vue', tailwind, vueTemplate);
         break;
       default:
         break;
