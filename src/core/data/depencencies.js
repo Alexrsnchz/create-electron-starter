@@ -18,6 +18,13 @@ import {
   vueMain,
   vueTailwindApp,
 } from '../configuration/templates/framework/vue.js';
+import {
+  svelteCssApp,
+  svelteCssMain,
+  svelteHtml,
+  svelteMain,
+  svelteTailwindApp,
+} from '../configuration/templates/framework/svelte.js';
 
 export const FRAMEWORK_DATA = {
   vanilla: () => ({
@@ -42,6 +49,15 @@ export const FRAMEWORK_DATA = {
     deps: ['vue'],
     devDeps: ['@vitejs/plugin-vue', '@vue/compiler-sfc'],
   }),
+  svelte: (tailwind) => ({
+    imp: `import { svelte } from '@sveltejs/vite-plugin-svelte'`,
+    plugin: 'svelte()',
+    main: 'main.ts',
+    app: 'App.svelte',
+    cssDir: tailwind,
+    deps: ['svelte'],
+    devDeps: ['@sveltejs/vite-plugin-svelte', 'svelte-check'],
+  }),
 };
 
 export const FRAMEWORK_TEMPLATES = {
@@ -60,6 +76,12 @@ export const FRAMEWORK_TEMPLATES = {
     html: vueHtml,
     main: tailwind ? vueCssMain : vueMain,
     app: tailwind ? vueTailwindApp : vueCssApp,
+    css: '',
+  }),
+  svelte: (tailwind) => ({
+    html: svelteHtml,
+    main: tailwind ? svelteCssMain : svelteMain,
+    app: tailwind ? svelteTailwindApp : svelteCssApp,
     css: '',
   }),
 };

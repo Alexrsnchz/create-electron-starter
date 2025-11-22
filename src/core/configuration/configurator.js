@@ -3,6 +3,7 @@ import { builderSetup, frameworkSetup, tailwindSetup } from './configSetup.js';
 import * as vanillaTemplate from './templates/framework/vanilla.js';
 import * as reactTemplate from './templates/framework/react.js';
 import * as vueTemplate from './templates/framework/vue.js';
+import * as svelteTemplate from './templates/framework/svelte.js';
 import { builderTemplate } from './templates/extra/builder.js';
 
 /* Adds the configuration needed by the dependencies
@@ -20,6 +21,9 @@ export async function configureDeps(framework, tailwind, builder, rootDir) {
         break;
       case 'vue':
         await frameworkSetup(rootDir, 'vue', tailwind, vueTemplate);
+        break;
+      case 'svelte':
+        await frameworkSetup(rootDir, 'svelte', tailwind, svelteTemplate);
         break;
       default:
         break;

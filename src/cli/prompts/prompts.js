@@ -42,6 +42,7 @@ async function askFramework() {
       { name: 'Vanilla', value: 'vanilla' },
       { name: 'React', value: 'react' },
       { name: 'Vue', value: 'vue' },
+      { name: 'Svelte', value: 'svelte' },
     ],
     default: 'vanilla',
   });

@@ -6,7 +6,7 @@ An unofficial CLI tool to scaffold a new [**electron-vite**](https://electron-vi
 > ⚡ Built for developers who want to skip boilerplate setup and jump straight into coding.
 
 [![Version](https://img.shields.io/npm/v/create-electron-starter?label=Version&labelColor=333333&color=27cfa8&style=flat&logoColor=ffffff)](https://www.npmjs.com/package/create-electron-starter)
-[![Monthly Downloads](https://img.shields.io/npm/dm/create-electron-starter?label=Downloads&labelColor=333333&color=27cfa8&style=flat&logoColor=ffffff)](https://www.npmjs.com/package/create-electron-starter)
+[![Downloads](https://img.shields.io/npm/dt/create-electron-starter?label=Downloads&labelColor=333333&color=27cfa8&style=flat&logoColor=ffffff)](https://www.npmjs.com/package/create-electron-starter)
 [![GitHub Stars](https://img.shields.io/github/stars/Alexrsnchz/create-electron-starter?label=Stars&labelColor=333333&color=27cfa8&style=flat&logoColor=ffffff)](https://github.com/Alexrsnchz/create-electron-starter/stargazers)
 [![Node](https://img.shields.io/node/v/create-electron-starter?label=Node&labelColor=333333&color=27cfa8&style=flat&logoColor=ffffff)](https://nodejs.org/)
 [![License](https://img.shields.io/npm/l/create-electron-starter?label=License&labelColor=333333&color=27cfa8&style=flat&logoColor=ffffff)](https://opensource.org/licenses/MIT)
@@ -29,35 +29,24 @@ yarn create electron-starter
 bunx create-electron-starter
 ```
 
-> Note
-> If you use PNPM you'll need to approve the postinstall scripts like ESBuild, Electron and SWC (for React).
-
-Alternatively, you can install it globally and run it directly without using `npx/pnpx/bunx`:
+Keep in mind that if you use pnpm you'll need to approve the postinstall scripts (Electron, ESBuild, and SWC if you use React) after the CLI finishes the configuration with this command:
 
 ```bash
-# Using npm
-npm install -g create-electron-starter
-
-# Using pnpm
-pnpm add -g create-electron-starter
-
-# Using yarn
-yarn global add create-electron-starter
-
-# Using bun
-bun add -g create-electron-starter
+pnpm approve-builds
 ```
 
 ## Features
 
-- ⚡️ Minimal, ready-to-run **electron-vite** + **TypeScript** setup.
-- ⚙️ Framework templates for: `React`, and `Vue`.
+- ⚡️ Ready-to-run **electron-vite** + **TypeScript** setup.
+- ⚙️ Framework templates for: `React`, `Vue`, and `Svelte`.
 - 🎨 Optional **Tailwind CSS** installation and configuration.
 - 📦 Optional **Electron Builder** installation and configuration.
 
 ## Feedback
 
 Found a bug or have a suggestion? You can open an issue here → [GitHub Issues](https://github.com/Alexrsnchz/create-electron-starter/issues)
+
+Also, if you liked the CLI and found it useful, consider giving the project a star on GitHub → [Repository](https://github.com/Alexrsnchz/create-electron-starter)
 
 ## Author
 
