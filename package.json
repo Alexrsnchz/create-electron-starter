@@ -26,7 +26,10 @@
     "electron",
     "scaffold",
     "starter",
-    "vite"
+    "vite",
+    "react",
+    "vue",
+    "svelte"
   ],
   "dependencies": {
     "@inquirer/prompts": "^7.9.0",
