@@ -1,4 +1,4 @@
-import { FRAMEWORK_CONFIG, TAILWIND_CONFIG } from '../data/depencencies.js';
+import { FRAMEWORK_DATA, FRAMEWORK_TEMPLATES, TAILWIND_CONFIG } from '../data/depencencies.js';
 import {
   createConfigFile,
   createFrameworkStructure,
@@ -10,12 +10,13 @@ import {
 
 /* Executes the complete setup for the
 indicated framework */
-export async function frameworkSetup(rootDir, framework, tailwind, template) {
-  const config = FRAMEWORK_CONFIG[framework];
+export async function frameworkSetup(rootDir, framework, tailwind) {
+  const config = FRAMEWORK_DATA[framework](tailwind);
+  const template = FRAMEWORK_TEMPLATES[framework](tailwind);
 
   if (framework !== 'vanilla') await updateViteConfig(rootDir, config.imp, config.plugin);
   if (framework === 'react') await updateTsConfig(rootDir);
-  await createFrameworkStructure(rootDir, config, tailwind, template);
+  await createFrameworkStructure(rootDir, config, template);
 }
 
 /* Executes the setup for Tailwind */

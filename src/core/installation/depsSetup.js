@@ -1,12 +1,7 @@
-import {
-  BASE_CONFIG,
-  BUILDER_CONFIG,
-  FRAMEWORK_CONFIG,
-  TAILWIND_CONFIG,
-} from '../data/depencencies.js';
+import { BASE_CONFIG, FRAMEWORK_DATA, TAILWIND_CONFIG } from '../data/depencencies.js';
 
 export function getDependencies(framework, tailwind, builder) {
-  const fw = FRAMEWORK_CONFIG[framework] || { deps: [], devDeps: [] };
+  const fw = (FRAMEWORK_DATA[framework] || (() => ({ deps: [], devDeps: [] })))(tailwind);
 
   const deps = [...(fw.deps ?? [])];
   const devDeps = [...BASE_CONFIG.devDeps, ...(fw.devDeps ?? [])];
@@ -15,7 +10,7 @@ export function getDependencies(framework, tailwind, builder) {
     devDeps.push(...TAILWIND_CONFIG.devDeps);
   }
   if (builder) {
-    devDeps.push(...BUILDER_CONFIG.devDeps);
+    devDeps.push('electron-builder');
   }
 
   return { deps, devDeps };

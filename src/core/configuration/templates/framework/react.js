@@ -1,4 +1,4 @@
-export const html = `<!DOCTYPE html>
+export const reactHtml = `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -11,13 +11,13 @@ export const html = `<!DOCTYPE html>
   </body>
 </html>`;
 
-export const main = `import { createRoot } from 'react-dom/client';
+export const reactMain = `import { createRoot } from 'react-dom/client';
 import './assets/styles/main.css';
 import App from './App';
 
 createRoot(document.getElementById('root')!).render(<App />);`;
 
-export const cssapp = `export default function App() {
+export const reactCssApp = `export default function App() {
   return (
     <div className="container">
       <h1>⚡ Electron-vite + <span className="react">React</span></h1>
@@ -33,7 +33,7 @@ export const cssapp = `export default function App() {
   );
 }`;
 
-export const tailwindapp = `export default function App() {
+export const reactTailwindApp = `export default function App() {
   return (
     <div className="w-[100vw] h-[100vh] flex flex-col items-center text-center bg-[linear-gradient(to_bottom,_#1f2544,_#272c4d,_#35395a,_#4a4e6d,_#6b6b85,_#83759a,_#a37aaf,_#d2a6cd)]">
       <h1 className="mt-[10rem] font-bold text-[2.5rem] text-[#f6f6f6]">
@@ -52,7 +52,7 @@ export const tailwindapp = `export default function App() {
 }
 `;
 
-export const css = `* {
+export const reactCss = `* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -94,7 +94,7 @@ p {
     border-radius: 5px;
     background: #414669;
     text-decoration: none;
-    color: #F6F6F6;
+    color: #f6f6f6;
     transition: all 0.25s ease;
 }
 
