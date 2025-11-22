@@ -2,6 +2,7 @@ import {
   vanillaCss,
   vanillaHtml,
   vanillaMain,
+  vanillaTailwindMain,
 } from '../configuration/templates/framework/vanilla.js';
 import {
   reactCss,
@@ -46,7 +47,7 @@ export const FRAMEWORK_DATA = {
 export const FRAMEWORK_TEMPLATES = {
   vanilla: (tailwind) => ({
     html: vanillaHtml,
-    main: vanillaMain,
+    main: tailwind ? vanillaTailwindMain : vanillaMain,
     css: tailwind ? '' : vanillaCss,
   }),
   react: (tailwind) => ({

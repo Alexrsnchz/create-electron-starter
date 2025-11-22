@@ -20,7 +20,7 @@ createRoot(document.getElementById('root')!).render(<App />);`;
 export const reactCssApp = `export default function App() {
   return (
     <div className="container">
-      <h1>⚡ Electron-vite + <span className="react">React</span></h1>
+      <h1 className="title">⚡ Electron-vite + <span className="react">React</span></h1>
 
       <p className="description">
         Thanks for using my template! If you find it useful, consider giving the project a star on GitHub ⭐
@@ -69,7 +69,7 @@ export const reactCss = `* {
     background-image: linear-gradient(to bottom, #1f2544, #272c4d, #35395a, #4a4e6d, #6b6b85, #83759a, #a37aaf, #d2a6cd);
 }
 
-h1 {
+.title {
     margin-top: 10rem;
     font-weight: bold;
     font-size: 2.5rem;
@@ -80,7 +80,7 @@ h1 {
     color: #61dafb;
 }
 
-p {
+.description {
     margin-top: 1.5rem;
     max-width: 500px;
     line-height: 1.7;
