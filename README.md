@@ -37,10 +37,11 @@ pnpm approve-builds
 
 ## Features
 
-- ⚡️ Ready-to-run **electron-vite** + **TypeScript** setup.
+- ⚡️ Ready-to-run **Electron-vite** + **TypeScript** setup.
 - ⚙️ Framework templates for: `React`, `Vue`, and `Svelte`.
 - 🎨 Optional **Tailwind CSS** installation and configuration.
 - 📦 Optional **Electron Builder** installation and configuration.
+- 📄 Optional **Prettier** installation and configuration.
 
 ## Feedback
 

@@ -1,6 +1,6 @@
 import { BASE_CONFIG, FRAMEWORK_DATA, TAILWIND_CONFIG } from '../data/depencencies.js';
 
-export function getDependencies(framework, tailwind, builder) {
+export function getDependencies(framework, tailwind, builder, prettier) {
   const fw = (FRAMEWORK_DATA[framework] || (() => ({ deps: [], devDeps: [] })))(tailwind);
 
   const deps = [...(fw.deps ?? [])];
@@ -11,6 +11,9 @@ export function getDependencies(framework, tailwind, builder) {
   }
   if (builder) {
     devDeps.push('electron-builder');
+  }
+  if (prettier) {
+    devDeps.push('prettier');
   }
 
   return { deps, devDeps };

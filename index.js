@@ -19,8 +19,21 @@ async function runCLI() {
 
     // Installation process
     await cloneTemplate(rootDir);
-    await installDeps(answers.framework, answers.tailwind, answers.builder, pkgManager, rootDir);
-    await configureDeps(answers.framework, answers.tailwind, answers.builder, rootDir);
+    await installDeps(
+      answers.framework,
+      answers.tailwind,
+      answers.builder,
+      answers.prettier,
+      pkgManager,
+      rootDir,
+    );
+    await configureDeps(
+      answers.framework,
+      answers.tailwind,
+      answers.builder,
+      answers.prettier,
+      rootDir,
+    );
 
     steps(answers.projectName, pkgManager);
   } catch (err) {

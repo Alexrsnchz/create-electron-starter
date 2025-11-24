@@ -30,3 +30,9 @@ export async function builderSetup(rootDir, output, template) {
   await updateScripts(rootDir);
   await createConfigFile(rootDir, output, template);
 }
+
+/* Executes the setup for Prettier */
+export async function prettierSetup(rootDir, template) {
+  await createConfigFile(rootDir, '.prettierignore', template.ignore);
+  await createConfigFile(rootDir, '.prettierrc', template.config);
+}

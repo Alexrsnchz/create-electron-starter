@@ -66,11 +66,21 @@ async function askBuilder() {
   });
 }
 
+/* Asks if the user wants to add Prettier
+to the project */
+async function askPrettier() {
+  return confirm({
+    message: 'Do you want to add Prettier?:',
+    default: false,
+  });
+}
+
 const prompts = {
   projectName: askProjectName,
   framework: askFramework,
   tailwind: askTailwind,
   builder: askBuilder,
+  prettier: askPrettier,
 };
 
 /* Executes all the prompts */
