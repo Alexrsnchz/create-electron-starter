@@ -39,7 +39,7 @@ if (root) {
   title.appendChild(highlight);
   container.appendChild(title);
   container.appendChild(paragraph);
-  container.appendChild(button);
+  container.appendChild(link);
     
   root.appendChild(container);
 }`;

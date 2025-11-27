@@ -3,6 +3,7 @@ import {
   createConfigFile,
   createFrameworkStructure,
   modifyCssFile,
+  updateEslintConfig,
   updateScripts,
   updateTsConfig,
   updateViteConfig,
@@ -10,11 +11,12 @@ import {
 
 /* Executes the complete setup for the
 indicated framework */
-export async function frameworkSetup(rootDir, framework, tailwind) {
+export async function frameworkSetup(rootDir, framework, tailwind, prettier) {
   const config = FRAMEWORK_DATA[framework](tailwind);
   const template = FRAMEWORK_TEMPLATES[framework](tailwind);
 
   if (framework !== 'vanilla') await updateViteConfig(rootDir, config.imp, config.plugin);
+  await updateEslintConfig(rootDir, config, prettier, template);
   if (framework === 'react') await updateTsConfig(rootDir);
   await createFrameworkStructure(rootDir, config, template);
 }

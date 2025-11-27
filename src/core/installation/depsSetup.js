@@ -13,7 +13,7 @@ export function getDependencies(framework, tailwind, builder, prettier) {
     devDeps.push('electron-builder');
   }
   if (prettier) {
-    devDeps.push('prettier');
+    devDeps.push('prettier', 'eslint-config-prettier');
   }
 
   return { deps, devDeps };

@@ -1,6 +1,24 @@
 import path from 'path';
 import { mkdir, readFile, writeFile } from 'fs/promises';
 
+/* Updates the eslint.config file with the
+framework and prettier configuration */
+export async function updateEslintConfig(rootDir, config, prettier, template) {
+  const configPath = path.join(rootDir, 'eslint.config.js');
+  let eslConfig = template.eslint || (await readFile(configPath, 'utf8'));
+
+  if (prettier) {
+    eslConfig = eslConfig.replace(
+      /(import .+ from .+;)(\n\n)/,
+      "$1\nimport prettier from 'eslint-config-prettier';$2",
+    );
+
+    eslConfig = eslConfig.replace(/(\n]\);)$/, ',\n  prettier$1');
+  }
+
+  await writeFile(configPath, eslConfig, 'utf8');
+}
+
 /* Updates the electron.vite.config file with the
 framework configuration */
 export async function updateViteConfig(rootDir, imp, plugin) {

@@ -15,16 +15,16 @@ export async function configureDeps(framework, tailwind, builder, prettier, root
 
     switch (framework) {
       case 'vanilla':
-        await frameworkSetup(rootDir, 'vanilla', tailwind, vanillaTemplate);
+        await frameworkSetup(rootDir, 'vanilla', tailwind, prettier, vanillaTemplate);
         break;
       case 'react':
-        await frameworkSetup(rootDir, 'react', tailwind, reactTemplate);
+        await frameworkSetup(rootDir, 'react', tailwind, prettier, reactTemplate);
         break;
       case 'vue':
-        await frameworkSetup(rootDir, 'vue', tailwind, vueTemplate);
+        await frameworkSetup(rootDir, 'vue', tailwind, prettier, vueTemplate);
         break;
       case 'svelte':
-        await frameworkSetup(rootDir, 'svelte', tailwind, svelteTemplate);
+        await frameworkSetup(rootDir, 'svelte', tailwind, prettier, svelteTemplate);
         break;
       default:
         break;

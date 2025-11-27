@@ -7,6 +7,7 @@ import {
 import {
   reactCss,
   reactCssApp,
+  reactEslint,
   reactHtml,
   reactMain,
   reactTailwindApp,
@@ -14,6 +15,7 @@ import {
 import {
   vueCssApp,
   vueCssMain,
+  vueEslint,
   vueHtml,
   vueMain,
   vueTailwindApp,
@@ -21,6 +23,7 @@ import {
 import {
   svelteCssApp,
   svelteCssMain,
+  svelteEslint,
   svelteHtml,
   svelteMain,
   svelteTailwindApp,
@@ -38,7 +41,14 @@ export const FRAMEWORK_DATA = {
     app: 'App.tsx',
     cssDir: true,
     deps: ['react', 'react-dom'],
-    devDeps: ['@vitejs/plugin-react-swc', '@types/react', '@types/react-dom'],
+    devDeps: [
+      '@vitejs/plugin-react-swc',
+      '@types/react',
+      '@types/react-dom',
+      'eslint-plugin-react',
+      'eslint-plugin-react-hooks',
+      'eslint-plugin-react-refresh',
+    ],
   }),
   vue: (tailwind) => ({
     imp: `import vue from '@vitejs/plugin-vue'`,
@@ -47,7 +57,7 @@ export const FRAMEWORK_DATA = {
     app: 'App.vue',
     cssDir: tailwind,
     deps: ['vue'],
-    devDeps: ['@vitejs/plugin-vue', '@vue/compiler-sfc'],
+    devDeps: ['@vitejs/plugin-vue', '@vue/compiler-sfc', 'eslint-plugin-vue'],
   }),
   svelte: (tailwind) => ({
     imp: `import { svelte } from '@sveltejs/vite-plugin-svelte'`,
@@ -56,7 +66,7 @@ export const FRAMEWORK_DATA = {
     app: 'App.svelte',
     cssDir: tailwind,
     deps: ['svelte'],
-    devDeps: ['@sveltejs/vite-plugin-svelte', 'svelte-check'],
+    devDeps: ['@sveltejs/vite-plugin-svelte', 'svelte-check', 'eslint-plugin-svelte'],
   }),
 };
 
@@ -67,18 +77,21 @@ export const FRAMEWORK_TEMPLATES = {
     css: tailwind ? '' : vanillaCss,
   }),
   react: (tailwind) => ({
+    eslint: reactEslint,
     html: reactHtml,
     main: reactMain,
     app: tailwind ? reactTailwindApp : reactCssApp,
     css: tailwind ? '' : reactCss,
   }),
   vue: (tailwind) => ({
+    eslint: vueEslint,
     html: vueHtml,
     main: tailwind ? vueCssMain : vueMain,
     app: tailwind ? vueTailwindApp : vueCssApp,
     css: '',
   }),
   svelte: (tailwind) => ({
+    eslint: svelteEslint,
     html: svelteHtml,
     main: tailwind ? svelteCssMain : svelteMain,
     app: tailwind ? svelteTailwindApp : svelteCssApp,
@@ -87,7 +100,17 @@ export const FRAMEWORK_TEMPLATES = {
 };
 
 export const BASE_CONFIG = {
-  devDeps: ['electron', 'vite', 'electron-vite', 'typescript', '@types/node'],
+  devDeps: [
+    'electron',
+    'vite',
+    'electron-vite',
+    'typescript',
+    '@types/node',
+    'eslint',
+    '@eslint/js',
+    'typescript-eslint',
+    'globals',
+  ],
 };
 
 export const TAILWIND_CONFIG = {

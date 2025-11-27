@@ -1,3 +1,60 @@
+export const svelteEslint = `import { defineConfig } from 'eslint/config';
+import js from '@eslint/js';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+import pluginSvelte from 'eslint-plugin-svelte';
+
+export default defineConfig([
+  {
+    ignores: [
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/out/**',
+      '**/release/**',
+      '**/*.lock*',
+      '**/.DS_Store',
+      '**/*.log',
+      '**/.cache/**'
+    ]
+  },
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
+  ...pluginSvelte.configs['flat/recommended'],
+  {
+    files: ['**/*.{js,mjs,cjs,ts}'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        ...globals.browser,
+        ...globals.node
+      }
+    }
+  },
+  {
+    files: ['src/main/**/*.{js,ts}', 'src/preload/**/*.{js,ts}'],
+    languageOptions: {
+      globals: globals.node
+    }
+  },
+  {
+    files: ['src/renderer/**/*.{js,ts,svelte}'],
+    languageOptions: {
+      globals: globals.browser
+    }
+  },
+  {
+    files: ['src/renderer/**/*.svelte'],
+    languageOptions: {
+      parserOptions: {
+        parser: tseslint.parser,
+        ecmaVersion: 'latest',
+        sourceType: 'module'
+      }
+    }
+  }
+]);`;
+
 export const svelteHtml = `<!DOCTYPE html>
 <html lang="en">
   <head>
