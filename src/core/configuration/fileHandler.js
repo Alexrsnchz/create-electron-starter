@@ -88,7 +88,7 @@ export async function updateScripts(rootDir) {
   const configPath = path.join(rootDir, 'package.json');
   const pkg = JSON.parse(await readFile(configPath, 'utf8'));
 
-  pkg.scripts['build:installer'] = 'electron-builder';
+  pkg.scripts['build:installer'] = 'electron-vite build && electron-builder';
   pkg.scripts['build:win'] = 'electron-builder --win';
   pkg.scripts['build:mac'] = 'electron-builder --mac';
   pkg.scripts['build:linux'] = 'electron-builder --linux';
